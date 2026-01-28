@@ -6,18 +6,20 @@ from enum import Enum
 class TaskPriority(Enum):
     """Priority levels for tasks."""
     
+    UNASSIGNED = "unassigned"
     LOW = "low"
     MEDIUM = "medium" 
     HIGH = "high"
-    URGENT = "urgent"
+    CRITICAL = "critical"
 
     def __lt__(self, other: "TaskPriority") -> bool:
-        """Enable priority comparison (low < medium < high < urgent)."""
+        """Enable priority comparison (unassigned < low < medium < high < critical)."""
         priority_order = [
+            TaskPriority.UNASSIGNED,
             TaskPriority.LOW,
             TaskPriority.MEDIUM, 
             TaskPriority.HIGH,
-            TaskPriority.URGENT
+            TaskPriority.CRITICAL
         ]
         
         return priority_order.index(self) < priority_order.index(other)
