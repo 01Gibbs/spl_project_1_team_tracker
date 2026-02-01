@@ -1,4 +1,4 @@
-"""Task Entity DTOs module."""
+"""Task Entity related DTOs"""
 
 from dataclasses import dataclass
 from typing import Optional
@@ -6,12 +6,13 @@ from typing import Optional
 from domain.value_objects.task_priority import TaskPriority
 from domain.entities.task import Task
 
+
 @dataclass
 class CreateTaskDto:
-    """Data Transfer Object for creating a Task."""
-    title: str
-    description: Optional[str] = None
-    priority: TaskPriority = TaskPriority.UNASSIGNED
+  title: str
+  description: str
+  priority: Optional[TaskPriority] = TaskPriority.UNASSIGNED
+
 
 @dataclass
 class TaskResponseDto:
@@ -24,7 +25,6 @@ class TaskResponseDto:
 
     @classmethod
     def from_domain(cls, task: Task) -> "TaskResponseDto":
-        """Create a TaskResponseDto from a Task domain entity."""
         return cls(
             task_id=task.id.value,
             status=task.status.value,
