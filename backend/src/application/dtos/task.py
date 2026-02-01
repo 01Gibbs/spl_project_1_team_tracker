@@ -10,7 +10,7 @@ from domain.entities.task import Task
 @dataclass
 class CreateTaskDto:
   title: str
-  description: str
+  description: Optional[str]
   priority: Optional[TaskPriority] = TaskPriority.UNASSIGNED
 
 
@@ -19,7 +19,7 @@ class TaskResponseDto:
     task_id: str
     status: str
     title: str
-    description: str
+    description: Optional[str]
     priority: str
     assignee_id: Optional[str]
 
