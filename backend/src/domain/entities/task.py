@@ -49,7 +49,7 @@ class Task:
         if not self.title.strip():
             raise ValueError("Task title cannot be empty")
         
-        if not self.description or not self.description.strip():
+        if self.description is not None and not self.description.strip():
             raise ValueError("Task description cannot be empty")
 
     def assign_to(self, assignee_id: str) -> None:
