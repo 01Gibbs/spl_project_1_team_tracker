@@ -8,7 +8,7 @@ from ..value_objects.task_status import TaskStatus
 from ..value_objects.task_priority import TaskPriority
 
 
-@dataclass
+@dataclass(frozen=True)
 class TaskId:
     """Value object for Task identity."""
     value: str
@@ -35,6 +35,7 @@ class Task:
     - Tasks must have a title and description
     - Status transitions follow business constraints
     - Tasks can be assigned to team members
+    - Tasks that are optional default to None
     """
     
     id: TaskId

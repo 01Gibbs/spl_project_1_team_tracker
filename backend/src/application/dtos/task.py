@@ -3,15 +3,14 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from domain.value_objects.task_priority import TaskPriority
 from domain.entities.task import Task
 
 
 @dataclass
 class CreateTaskDto:
   title: str
-  description: Optional[str]
-  priority: Optional[TaskPriority] = TaskPriority.UNASSIGNED
+  description: Optional[str] = None
+  priority: Optional[str] = None
 
 
 @dataclass
