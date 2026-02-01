@@ -39,9 +39,9 @@ class Task:
     
     id: TaskId
     title: str
-    description: str
     status: TaskStatus
     priority: TaskPriority
+    description: Optional[str] = None
     assignee_id: Optional[str] = None
 
     def __post_init__(self):
@@ -49,7 +49,7 @@ class Task:
         if not self.title.strip():
             raise ValueError("Task title cannot be empty")
         
-        if not self.description.strip():
+        if self.description is not None and not self.description.strip():
             raise ValueError("Task description cannot be empty")
 
     def assign_to(self, assignee_id: str) -> None:
